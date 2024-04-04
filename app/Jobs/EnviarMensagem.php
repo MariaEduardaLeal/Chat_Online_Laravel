@@ -18,7 +18,7 @@ class EnviarMensagem implements ShouldQueue
     /**
      * Create a new job instance.
      */
-    public function __construct(public Messagem $message)
+    public function __construct(public Messagem $message) // O construtor recebe uma instância de Messagem como argumento
     {
         //
     }
@@ -26,8 +26,9 @@ class EnviarMensagem implements ShouldQueue
     /**
      * Execute the job.
      */
-    public function handle(): void
+    public function handle(): void // Método para executar o job
     {
+        // Dispara um evento RecebeMensagem, passando os dados da mensagem como parâmetro
         RecebeMensagem::dispatch([
             'id' => $this->message->id,
             'user_id' => $this->message->user_id,
