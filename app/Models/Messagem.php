@@ -27,7 +27,7 @@ class Messagem extends Model
         return date(
             'd M Y, H:i:s',
             // Converte a data e hora do atributo 'create_at' para um timestamp UNIX
-            strtotime($this->attributes['create_at'])
+            strtotime($this->attributes['created_at'])
         );
     }
 }

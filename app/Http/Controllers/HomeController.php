@@ -37,6 +37,12 @@ class HomeController extends Controller
         ]);
     }
 
+    public function messages(): JsonResponse
+    {
+        $messages = Messagem::with('user')->get()->append('time');
+
+        return response()->json($messages);
+    }
     public function message(Request $request): JsonResponse
     {
         // Cria uma nova mensagem com base nos dados recebidos na requisição
